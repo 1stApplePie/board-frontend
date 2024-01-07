@@ -1,12 +1,13 @@
-import Header from "../components/common/Header";
+import HeaderContainer from '../containers/common/HeaderContainer.js';
+import PostListForm from '../components/posts/PostListForm.js';
 
 const PostListPage = () => {
-    return (
-        <>
-        <Header />
-        <div>Hello World!</div>
-        </>
-    );
+  return (
+    <>
+      <HeaderContainer />
+      <PostListForm />
+    </>
+  );
 };
 
 export default PostListPage;
