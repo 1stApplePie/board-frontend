@@ -6,10 +6,8 @@ import createRequestSaga, {
 } from '../lib/createRequestSaga';
 
 const TEMP_SET_USER = 'user/TEMP_SET_USER';
-
 const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] =
   createRequestActionTypes('user/CHECK');
-
 const LOGOUT = 'user/LOGOUT';
 
 export const tempSetUser = createAction(TEMP_SET_USER, (user) => user);
@@ -60,7 +58,7 @@ export default handleActions(
     [CHECK_FAILURE]: (state, { payload: error }) => ({
       ...state,
       user: null,
-      checkError: null,
+      checkError: error,
     }),
     [LOGOUT]: (state) => ({
       ...state,
