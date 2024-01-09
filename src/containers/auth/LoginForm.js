@@ -6,6 +6,7 @@ import AuthForm from "../../components/auth/AuthForm";
 import { check } from "../../modules/user";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
@@ -14,6 +15,7 @@ const LoginForm = () => {
     authError: auth.authError,
     user: user.user,
   }));
+  // 인풋 변경 이벤트 핸들러
   const onChange = (e) => {
     const { value, name } = e.target;
     dispatch(
@@ -25,12 +27,14 @@ const LoginForm = () => {
     );
   };
 
+  // 폼 등록 이벤트 핸들러
   const onSubmit = (e) => {
     e.preventDefault();
     const { username, password } = form;
     dispatch(login({ username, password }));
   };
 
+  // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
   useEffect(() => {
     dispatch(initializeForm("login"));
   }, [dispatch]);
@@ -48,14 +52,14 @@ const LoginForm = () => {
     }
   }, [auth, authError, dispatch]);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (user) {
-      console.log("check API 성공");
-      console.log(user);
-
       navigate("/");
+      try {
+        localStorage.setItem("user", JSON.stringify(user));
+      } catch (e) {
+        console.log("localStorage is not working");
+      }
     }
   }, [navigate, user]);
 

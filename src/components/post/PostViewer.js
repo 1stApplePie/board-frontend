@@ -5,6 +5,7 @@ import Responsive from "../common/Responsive";
 import SubInfo from "../common/SubInfo";
 import Tags from "../common/Tags";
 import { Helmet } from "react-helmet-async";
+import CommentViewerContainer from "../../containers/post/CommentViewerContainer";
 
 const PostViewerBlock = styled(Responsive)`
   margin-top: 4rem;
@@ -55,6 +56,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
       </PostHead>
       {actionButtons}
       <PostContent dangerouslySetInnerHTML={{ __html: body }} />
+      <CommentViewerContainer />
     </PostViewerBlock>
   );
 };

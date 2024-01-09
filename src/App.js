@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import PostListPage from "./pages/PostListPage";
 import LoginPage from "./pages/LoginPage";

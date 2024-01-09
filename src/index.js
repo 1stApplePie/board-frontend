@@ -19,7 +19,9 @@ const store = createStore(
 
 function loadUser() {
   try {
+    console.log("local Storage: ", localStorage);
     const user = localStorage.getItem("user");
+    console.log("User from localStorage:", user);
     if (!user) return; // 로그인 상태가 아니라면 아무것도 안함
 
     store.dispatch(tempSetUser(user));
